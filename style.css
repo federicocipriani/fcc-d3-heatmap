@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Open+Sans:wght@800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0061a7;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+/* .container-strip {
+    background-color: #fff;
+    width: 100vw;
+} */
+
+.container {
+    margin: 0 auto;
+    position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    padding: 2rem;
+    max-height: 60vh;
+    max-width: 70vw;
+    border-radius: 1rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+#title {
+    margin: 0 auto;
+    font-size: 2.5rem;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+}
+
+#subtitle {
+    margin: 0 auto 4rem;
+    font-size: 1.75rem;
+    color: #fdad01;
+}
+
+#x-axis-top,
+#y-axis-grid {
+    stroke-dasharray: 0.1rem;
+    stroke-opacity: 0.3;
+}
+
+g {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.dot {
+    stroke: black;
+    opacity: 0.7;
+}
+
+#legend {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#tooltip {
+    position: absolute;
+    background-color: white;
+    border: 0.05rem solid black;
+    max-width: 15rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    text-align: left;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1024px) {
+    .container-strip {
+        max-height: 100vh;
+    }
+    .container {
+        width: 90vw;
+        padding: 1rem;
+        max-height: 80vh;
+    }
+    #title {
+        font-size: 2rem;
+    }
+    #subtitle {
+        font-size: 1.5rem;
+    }
+    text {
+        font-size: 1rem;
+    }
+    #x_axis_label,
+    #y_axis_label {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        max-width: 80vw;
+        padding: 1rem;
+    }
+    #title {
+        font-size: 1rem;
+        text-align: center;
+    }
+    #subtitle {
+        font-size: 0.75rem;
+        text-align: center;
+        margin: 0 auto 2rem;
+    }
+
+    #x_axis_label,
+    #y_axis_label {
+        font-size: 1.5rem;
+    }
+    #tooltip {
+        left: 20%;
+        max-width: 6rem;
+        font-size: 0.5rem;
+        text-align: left;
+        z-index: 10;
+    }
+}
