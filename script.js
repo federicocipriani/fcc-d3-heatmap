@@ -20,31 +20,30 @@ fetch(
         console.log(data.monthlyVariance);
         // ---------------------------------------------------------
         // Extract x and y values
-        const years = data.map((item) => item.Year);
+        let years = [];
+        for (i = 0; i < data.monthlyVariance.length; i = i + 12) {
+            years.push(data.monthlyVariance[i].year);
+        }
+        // console.log(years);
 
-        var specifier = '%M:%S';
-        const time = data.map((item) => d3.timeParse(specifier)(item.Time));
+        const months = [...Array(12).keys()];
+        console.log(months);
 
         // ---------------------------------------------------------
         // Setup legend
-        const legend_val = data.map((item) =>
-            item.Doping !== '' ? true : false
-        );
-        var color = d3.scaleOrdinal().domain(legend_val).range(d3.schemeSet1);
+        // const legend_val = data.map((item) =>
+        //     item.Doping !== '' ? true : false
+        // );
+        // var color = d3.scaleOrdinal().domain(legend_val).range(d3.schemeSet1);
 
         // ---------------------------------------------------------
         // Get min, max and range values
-        var years_min = d3.min(years) - 1;
-        var years_max = d3.max(years) + 1;
+        var years_min = d3.min(years);
+        var years_max = d3.max(years);
         var years_range = years_max - years_min;
 
-        var specifier_minmax = '%M';
-        var time_min = d3.timeParse(specifier_minmax)(
-            d3.min(time).getMinutes()
-        );
-        var time_max = d3.timeParse(specifier_minmax)(
-            d3.max(time).getMinutes() + 1
-        );
+        var months_min = d3.min(months);
+        var months_max = d3.max(months);
 
         // ---------------------------------------------------------
         // Scaling the domain to the dimensions of the canvas
@@ -54,8 +53,8 @@ fetch(
             .range([0, svgW]);
 
         var yScale = d3
-            .scaleTime()
-            .domain([time_min, time_max])
+            .scaleLinear()
+            .domain([months_min, months_max])
             .range([svgH, 0]);
 
         // ---------------------------------------------------------
